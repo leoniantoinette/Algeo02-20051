@@ -1,8 +1,16 @@
 import numpy as np
 import time
+import random
+
+from numpy.linalg import det
 
 # fungsi untuk mengecek apakah suatu matrix adalah matrix diagonal
 def isDiagonal(A):
+  # KAMUS
+  # Ak  : matrix
+  # n   : integer ukuran matrix
+
+  # ALGORITMA
   Ac = np.copy(A)
   np.fill_diagonal(Ac, 0)
   return (Ac==0).all()
@@ -36,8 +44,11 @@ def eigen(A):
   menghasilkan suatu matrix eigenvectors dari A
   '''
   # KAMUS
-  # Ak  : matrix
-  # n   : integer ukuran matrix
+  # Ak, Q, R  : matrix
+  # n         : integer ukuran matrix
+  # eigvec    : matrix berisi vektor eigen dari matrix
+  # eigval    : array berisi nilai eigen dari matrix
+
   # ALGORITMA
   Ak = np.copy(A)
   n = Ak.shape[0]           # ukuran matrix yaitu n
@@ -55,18 +66,31 @@ def eigen(A):
   return eigval, eigvec
 
 def svd(A):
+  # KAMUS
+  # nrow, ncol  : integer ukuran matrix
+  # eigval      : array berisi nilai eigen dari matrix
+  # U, V, VT, S : matrix
+  # singular    : float nilai singular
+  # col         : integer indeks kolom
+
+  # ALGORITMA
   nrow = A.shape[0]   # ukuran baris matrix
   ncol = A.shape[1]   # ukuran kolom matrix
-  eigval1, U = eigen(A @ A.T)
+  eigval, U = eigen(A @ A.T)
   # inisialisasi matrix S dengan ukuran nrow x ncol dengan nilai 0
   S = np.zeros((nrow,ncol))
   # set elemen diagonal matrix S dengan nilai singular matrix A
   for i in range(nrow):
-    if (eigval1[i] <= 0) :
+    if (eigval[i] <= 0) :
       singular = 0
     else:
-      singular = np.sqrt(eigval1[i])
+      singular = np.sqrt(eigval[i])
     S[i,i] = singular
+  # cek apakah U merupakan matrix singular
+  while (np.linalg.det(U) == 0):
+    col = random.randint(0, U.shape[1]-1)
+    for i in range(U.shape[0]):
+      U[i,col] *= -1
   # A = U S VT, maka VT = inv(S) inv(U) A
   VT = (np.linalg.inv(S)) @ (np.linalg.inv(U)) @ A
   return U, S, VT
@@ -77,7 +101,6 @@ def svd(A):
 # start_time = time.time()
 
 # A = np.array([[2, 5, 8, 7], [5, 2, 2, 8], [7, 5, 6, 6], [5, 4, 4, 8]])
-# C = A @ A.T
 
 # u1,s1,v1= svd(A)
 # u,s,v = np.linalg.svd(A)

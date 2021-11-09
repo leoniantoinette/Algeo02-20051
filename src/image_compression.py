@@ -5,7 +5,7 @@ from PIL import Image
 #Membuka file Image dan pecah menjadi martriks r,g,b
 def openImage(imagePath):
     originalImage = Image.open(imagePath)
-    image = np.array(originalImage)
+    image = np.array(originalImage).astype(float)
 
     imageRed = image[:, :, 0]
     imageGreen = image[:, :, 1]
@@ -27,7 +27,9 @@ def compression(A,k):
     return imgCompressed
 
 
-r,g,b, originalImage = openImage('src/16.png')
+np.set_printoptions(suppress=True)
+
+r,g,b, originalImage = openImage('16.png')
 
 k = 5
 
