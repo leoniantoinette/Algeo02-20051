@@ -36,16 +36,14 @@ def eigen(A):
   menghasilkan suatu matrix eigenvectors dari A
   '''
   # KAMUS
-  # Ak, Q, R  : matrix
-  # n         : integer ukuran matrix
-  # eigvec    : matrix berisi vektor eigen dari matrix
-  # eigval    : array berisi nilai eigen dari matrix
+  # Ak  : matrix
+  # n   : integer ukuran matrix
   # ALGORITMA
   Ak = np.copy(A)
   n = Ak.shape[0]           # ukuran matrix yaitu n
   # inisialisasi matrix eigvec dengan suatu matrix identitas berukuran n
   eigvec = np.eye(n)
-  for i in range(1000000):
+  for i in range(500):
     # lakukan QR decomposition pada Ak
     Q, R = np.linalg.qr(Ak)
     Ak = R @ Q
@@ -57,17 +55,9 @@ def eigen(A):
   return eigval, eigvec
 
 def svd(A):
-  # KAMUS
-  # nrow, ncol        : integer ukuran matrix
-  # eigval1, eigval2  : array berisi nilai eigen dari matrix
-  # U, V, VT, S       : matrix
-  # singular          : float nilai singular
-  # ALGORITMA
   nrow = A.shape[0]   # ukuran baris matrix
   ncol = A.shape[1]   # ukuran kolom matrix
   eigval1, U = eigen(A @ A.T)
-  eigval2, V = eigen(A.T @ A)
-  VT = V.transpose()
   # inisialisasi matrix S dengan ukuran nrow x ncol dengan nilai 0
   S = np.zeros((nrow,ncol))
   # set elemen diagonal matrix S dengan nilai singular matrix A
@@ -77,6 +67,8 @@ def svd(A):
     else:
       singular = np.sqrt(eigval1[i])
     S[i,i] = singular
+  # A = U S VT, maka VT = inv(S) inv(U) A
+  VT = (np.linalg.inv(S)) @ (np.linalg.inv(U)) @ A
   return U, S, VT
 
 
@@ -85,6 +77,7 @@ def svd(A):
 # start_time = time.time()
 
 # A = np.array([[2, 5, 8, 7], [5, 2, 2, 8], [7, 5, 6, 6], [5, 4, 4, 8]])
+# C = A @ A.T
 
 # u1,s1,v1= svd(A)
 # u,s,v = np.linalg.svd(A)
@@ -100,6 +93,9 @@ def svd(A):
 # print(v1)
 # print("V np")
 # print(v)
+
+# print(u1 @ s1 @ v1)
+# print(u @ np.diag(s) @ v)
 
 # final_time = time.time()
 # print(final_time - start_time)
