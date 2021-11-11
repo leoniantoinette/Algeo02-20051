@@ -1,6 +1,6 @@
 # Algeo02-20051
 
-***Librarys***
+***Librarys***<br />
 numpy<br />
 pillow<br />
 
@@ -8,7 +8,7 @@ pillow<br />
 
 Make sure to have Python 3 installed already in your computer<br />
 
-**For Windows**
+**For Windows**<br />
 open cmd<br />
 go inside src directory then type<br />
 py -m venv env<br />
@@ -20,7 +20,7 @@ set FLASK_APP=app.py<br />
 flask run<br />
 press the url, provided, make sure to have all the librarys listed up top<br />
 
-**For Debian/Ubuntu/MacOS**
+**For Debian/Ubuntu/MacOS**<br />
 open terminal<br />
 go inside src directory then type<br />
 python3 -m venv env<br />
