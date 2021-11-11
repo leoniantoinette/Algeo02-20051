@@ -67,32 +67,14 @@ def eigen(A):
 
 def svd(A):
   # KAMUS
-  # nrow, ncol  : integer ukuran matrix
-  # eigval      : array berisi nilai eigen dari matrix
-  # U, V, VT, S : matrix
-  # singular    : float nilai singular
-  # col         : integer indeks kolom
-
+  # eigval1, eigval2  : array berisi nilai eigen dari matrix
+  # U, V, VT, S       : matrix
+  
   # ALGORITMA
-  nrow = A.shape[0]   # ukuran baris matrix
-  ncol = A.shape[1]   # ukuran kolom matrix
-  eigval, U = eigen(A @ A.T)
-  # inisialisasi matrix S dengan ukuran nrow x ncol dengan nilai 0
-  S = np.zeros((nrow,ncol))
-  # set elemen diagonal matrix S dengan nilai singular matrix A
-  for i in range(nrow):
-    if (eigval[i] <= 0) :
-      singular = 0
-    else:
-      singular = np.sqrt(eigval[i])
-    S[i,i] = singular
-  # cek apakah U merupakan matrix singular
-  while (np.linalg.det(U) == 0):
-    col = random.randint(0, U.shape[1]-1)
-    for i in range(U.shape[0]):
-      U[i,col] *= -1
-  # A = U S VT, maka VT = inv(S) inv(U) A
-  VT = (np.linalg.inv(S)) @ (np.linalg.inv(U)) @ A
+  eigval1, U = eigen(A @ A.T)
+  eigval2, V = eigen(A.T @ A)
+  VT = V.T
+  S = U.T @ A @ V
   return U, S, VT
 
 

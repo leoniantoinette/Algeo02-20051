@@ -21,9 +21,9 @@ def compression(A,k):
     #tes print pake yg linalg sama fungsi svd kita
     # print(U_color[:, 0:k])
     # print(np.diag(S_color)[0:k,0:k])
-    US = np.matmul(U_color[:, 0:k],np.diag(S_color)[0:k,0:k])
+    US = np.matmul(U_color[:, 0:k],(S_color)[0:k,0:k])
     imgReconstructed = np.matmul(US,V_color[0:k,:])
-    imgCompressed = imgReconstructed.astype('uint8')
+    imgCompressed = np.clip(imgReconstructed,0,255).astype('uint8')
     return imgCompressed
 
 
