@@ -7,8 +7,7 @@
     </head>
     <body>
         <br>
-
-        <p><h1>Python Flask Upload Compress Image</h1></p>
+        <p><h1>Welcome to Image Compressor Online</h1></p>
         <div class="container">
             <div class = "col-3">
                 <div class="card">
@@ -30,33 +29,24 @@
                         </div>
                     {% endif %}
                     <form method="post" action="/" enctype="multipart/form-data">
+                    <div class = "kpercent">
+                        <br>
+                        <p>input k value</p>
+                        <input type ="text" name="k_value" >
+                        <p>%</p>
+                        </br>
+                    </div>
                         <dl>
                             <p>
                                 <input type="file" name="file" class="form-control" autocomplete="off" required>
                             </p>
                         </dl>
                         <p>
-                            <input type="submit" value="Submit File" class="btn-info">
+                        <input type="submit" value="Submit File" class="btn-info">
                         </p>
                     </form>
                 </div> 
-
-                <div class="container">
-                    <div class="card">
-                        <img src="https://thumbs.dreamstime.com/b/gray-white-squares-checkerboard-pattern-83892872.jpg">
-
-                        <dl>
-                            <p>
-                                <input type="download" value="Download" class="btn-info">
-                            </p>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-            
+            </div>           
         </div>
-        
-
-        
     </body>
 </html>

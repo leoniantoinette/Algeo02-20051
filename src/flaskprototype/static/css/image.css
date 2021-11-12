@@ -9,6 +9,10 @@ body{
     background-color: blanchedalmond;
 }
 
+.kpercent {
+    display: flex; /* 2. display flex to the rescue */
+    flex-direction: row;
+}
 
 .container{
     contain: layout inline-size;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset= "UTF-8">
+        <title> Upload image</title>
+        <link rel="stylesheet" href= "{{url_for('static', filename = 'css/image.css')}}">
+    </head>
+    <body>
+        <br>
+        <p><h1>Python Flask Upload Compress Image</h1></p>
+        <div class="container">
+            <div class = "col-3">
+                <div class="card">
+                    <h2>Before</h2>
+                    {% if filename %}
+                        <div class= "gfg">
+                            <img src="{{ url_for('static', filename= 'uploads/' + filename) }}">
+                        </div>
+                    {% endif %}
+                    <label for = "sizeimagebfr">Size Image Before: </label>
+                    <p placeholder="sizeimagebfr">{{sizebfr}}</p>
+                    <br>
+                </div> 
+
+
+                <div class="container">
+                    <div class="card">
+                        <br>
+                        <h2>After</h2>
+                        <br>
+                        <br>
+                        {% if filename %}
+                        <div class= "gfg">
+                            <img src="{{ url_for('static', filename= 'processed/compressedhasil.jpeg') }}">
+                        </div>
+                        {% endif %}
+                        <dl>
+                            <p>
+                                <a href="/download" target="blank"><button class= 'btn btn-default'>Download</button></button></a>
+                            </p>
+                        </dl>
+                        <br>
+                        <label for = "compressed_percent">Percent comppresion: </label>
+                        <p placeholder="compressed_percent">{{percent}} </p>
+                        <br>
+                        <label for = "timetaken">Time taken to load image: </label>
+                        <p placeholder="timetaken"> {{times}} s</p>
+                        <br>
+                        <label for = "sizeimageaftr">Size Image After: </label>
+                        <p placeholder="sizeimageaftr"> {{sizeaftr}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
