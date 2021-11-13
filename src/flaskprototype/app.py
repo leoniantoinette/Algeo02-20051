@@ -74,10 +74,10 @@ def uploads():
         if (flag):
             k_value = int(k_value)
         else:
-            flash('k value is integer, please enter a valid one')
+            flash(' jumlah singular value harus bilangan bulat lebih dari nol')
             return redirect(url_for("uploads"))   
         
-        if (flag) and (k_value < 100) and (k_value > 0):
+        if (flag) and (k_value > 0):
 
             #buat mengecek file kaalau sudah benar dan rentang k value
             if ('file' not in request.files):
@@ -103,17 +103,17 @@ def uploads():
                 flash('Allowed image types are - png, jpg, jpeg')
                 return redirect(url_for("uploads"))
         else:
-            flash('Put k value between 0 to 100')
+            flash('singular value harus lebih dari nol')
             return redirect(url_for("uploads"))
     else:
-        flash('Put in k value')
+        flash('Put in singular value')
         return redirect(url_for("uploads"))
 
 
 @app.route('/compressed/<filename>/<k_value>', methods=['GET','POST'])
 def compressing(filename, k_value):
     #penanganan kasus jika salah input file
-
+    k_value = int(k_value)
     
     image = np.array(Image.open('static/uploads/' + filename))
 
@@ -122,20 +122,24 @@ def compressing(filename, k_value):
     col = image.shape[1]
 
     
-    originalSize = np.double(row * col * 3)
-    compressedSize = np.double(k_value * (1 + row + col) * 3)
+    originalSize = (row * col * 3)
+    compressedSize = (k_value * (1 + row + col) * 3)
 
 
-    ratio = np.double(compressedSize/originalSize)
+    ratio = (compressedSize/originalSize)
     percent = (round(ratio * 100, 2))
 
+
+    print(percent)
+
     #comppressing image after uploaded inside uploads folder
+    start_time = time.time()
     r,g,b, originalImage = openImage('./static/uploads/' + filename)
     
     
     k_value = int(k_value)
     
-    start_time = time.time()
+    
     r_compressed = compression(r,k_value)
     g_compressed = compression(g,k_value)
     b_compressed = compression(b,k_value)
@@ -146,11 +150,10 @@ def compressing(filename, k_value):
 
     
     compressedImage = Image.merge("RGB",(img_r,img_g,img_b))
-    final_time = time.time()
+    
 
     #Total waktu compression
-    total_time = final_time - start_time
-    print(total_time)
+    
     print(percent)
 
     #saving in binary to display and file to download
@@ -163,7 +166,8 @@ def compressing(filename, k_value):
 
     #save file hasil image
     compressedImage.save('static/processed/compressed' + 'hasil' + '.jpeg')
-
+    final_time = time.time()
+    total_time = final_time - start_time
     # mengembalikan laman
     return render_template('image2.html', filename=filename, sizebfr=originalSize, times= str("%.2f" %total_time), sizeaftr=compressedSize,percent=percent)
 
