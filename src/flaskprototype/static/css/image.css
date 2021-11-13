@@ -1,7 +1,14 @@
 body{
-    background-color:slategray;
+    background-color:#FFFAF5;
     text-align: center;
-    margin: 1em;
+    contain: layout inline-size;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Helvetica';
+    font-size: 17px;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 30px;
 }
 
 .row{
@@ -9,29 +16,92 @@ body{
     background-color: blanchedalmond;
 }
 
-.kpercent {
-    display: flex; /* 2. display flex to the rescue */
-    flex-direction: row;
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8%;
+    width: 45%;
 }
 
-.container{
-    contain: layout inline-size;
-    background-color: brown;
+.profile img {
+    width: 65%;;
+}
+
+.profile .name {
+    display: flex;
+    flex: row;
+}
+
+.profile .name img {
+    width: 130px;
+    margin: auto;
+}
+
+.profile .name h1 {
+    font-size: 50px;
+    margin-left: 10px;
+}
+
+.profile .desc p {
+    font-size: 20px;
 }
 
 .card{
     background: white;
     padding:1em;
-    margin-top: 2em;
-    margin-left: 1em;
-    margin-bottom: 2em;
-    margin-right: 1em;
+    margin: 2em 1em;
+    border-radius: 10px;
+    border: 2px solid #D6D8E1;
 }
 
 .col-3{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 1em;
+    width: 35%;
+}
+
+.card ul {
+    padding: 0;
+}
+
+.card li {
+    list-style-type: none;
+    color: red;
+}
+
+.kpercent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.kpercent input {
+    width: 40px;
+    height: 25px;
+    margin-left: 5px;
+}
+
+.form-control {
+    font-size: 14px;
+}
+
+.btn-info {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 5px;
+    line-height: 28px;
+    width: 180px;
+}
+
+.btn-info:hover {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .gfg {

@@ -74,12 +74,12 @@ def uploads():
         if (flag):
             k_value = int(k_value)
         else:
-            flash(' jumlah singular value harus bilangan bulat lebih dari nol')
+            flash('Jumlah singular value harus bilangan bulat lebih dari nol')
             return redirect(url_for("uploads"))   
         
         if (flag) and (k_value > 0):
 
-            #buat mengecek file kaalau sudah benar dan rentang k value
+            #buat mengecek file kalau sudah benar dan rentang k value
             if ('file' not in request.files):
                 flash('Wrong File Part')
                 return redirect(url_for("uploads"))
@@ -103,7 +103,7 @@ def uploads():
                 flash('Allowed image types are - png, jpg, jpeg')
                 return redirect(url_for("uploads"))
         else:
-            flash('singular value harus lebih dari nol')
+            flash('Nilai singular value harus lebih dari nol')
             return redirect(url_for("uploads"))
     else:
         flash('Put in singular value')

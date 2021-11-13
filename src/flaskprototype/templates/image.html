@@ -2,50 +2,58 @@
 <html>
     <head>
         <meta charset= "UTF-8">
-        <title> Upload image</title>
+        <title>SVDed Compression</title>
         <link rel="stylesheet" href= "{{url_for('static', filename = 'css/image.css')}}">
     </head>
     <body>
         <br>
-        <p><h1>Welcome to Image Compressor Online</h1></p>
-        <div class="container">
-            <div class = "col-3">
-                <div class="card">
-                    <h2>Select a file to upload</h2>
-                    <p>
-                        {% with messages = get_flashed_messages() %}
-                          {% if messages %}
-                            <ul>
-                            {% for message in messages %}
-                              <li>{{ message }}</li>
-                            {% endfor %}
-                            </ul>
-                          {% endif %}
-                        {% endwith %}
-                    </p>
-                    {% if filename %}
-                        <div class= "gfg">
-                            <img src="{{ url_for('display_image', filename=filename) }}">
-                        </div>
-                    {% endif %}
-                    <form method="post" action="/" enctype="multipart/form-data">
-                    <div class = "kpercent">
-                        <br>
-                        <p> jumlah singular value yang digunakan: </p>
-                        <input type ="text" name="k_value" >
-                        </br>
-                    </div>
-                        <dl>
-                            <p>
-                                <input type="file" name="file" class="form-control" autocomplete="off" required>
-                            </p>
-                        </dl>
-                        <p>
-                        <input type="submit" value="Submit File" class="btn-info">
-                        </p>
-                    </form>
-                </div> 
-            </div>           
+        <div class="profile">
+            <div class="name">
+                <img src="{{ url_for('static', filename= 'icons.png') }}">
+                <h1>SVDed Compression</h1>
+            </div>
+            <div class="desc">
+                <p>Welcome to SVDed Image Compression!</p>
+                <p>This online image compressor allows to compress your image</p>
+                <p>You can specify the image compression rate by giving how many singular values will be used</p>
+            </div>
         </div>
+        <div class = "col-3">
+            <div class="card">
+                <h2>Select a file to upload</h2>
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                          <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}
+                </p>
+                {% if filename %}
+                    <div class= "gfg">
+                        <img src="{{ url_for('display_image', filename=filename) }}">
+                    </div>
+                {% endif %}
+                <form method="post" action="/" enctype="multipart/form-data">
+                <div class = "kpercent">
+                    <br>
+                    <p>Jumlah singular value yang digunakan: </p>
+                    <input type ="text" name="k_value" >
+                    </br>
+                </div>
+                    <dl>
+                        <p>
+                            <input type="file" name="file" class="form-control" autocomplete="off" required>
+                        </p>
+                    </dl>
+                    <p>
+                    <input type="submit" value="Compress Now" class="btn-info">
+                    </p>
+                </form>
+            </div> 
+        </div>           
     </body>
 </html>
