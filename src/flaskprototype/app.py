@@ -4,7 +4,6 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import numpy as np
 import base64
-import numpy as np
 import time
 from svd import svd
 

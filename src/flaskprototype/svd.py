@@ -1,8 +1,4 @@
 import numpy as np
-import time
-import random
-
-from numpy.linalg import det
 
 # fungsi untuk mengecek apakah suatu matrix adalah matrix diagonal
 def isDiagonal(A):
@@ -66,6 +62,11 @@ def eigen(A):
   return eigval, eigvec
 
 def svd(A):
+  '''
+  Dengan fungsi eigen di atas, cari U dengan mencari matrix eigen vectors dari A AT
+  serta cari V dengan mencari matrix eigen vectors dari AT A
+  Kemudian, matriks S dapat dicari dengann rumus S = UT A V
+  '''
   # KAMUS
   # eigval1, eigval2  : array berisi nilai eigen dari matrix
   # U, V, VT, S       : matrix
@@ -77,30 +78,25 @@ def svd(A):
   S = U.T @ A @ V
   return U, S, VT
 
+  # untuk testing
+np.set_printoptions(suppress=True)
 
-# untuk testing
-# np.set_printoptions(suppress=True)
-# start_time = time.time()
+A = np.array([[2, 5, 8, 7], [5, 2, 2, 8], [7, 5, 6, 6], [5, 4, 4, 8]])
 
-# A = np.array([[2, 5, 8, 7], [5, 2, 2, 8], [7, 5, 6, 6], [5, 4, 4, 8]])
+u1,s1,v1= svd(A)
+u,s,v = np.linalg.svd(A)
+print("U")
+print(u1)
+print("U np")
+print(u)
+print("S")
+print(s1)
+print("S np")
+print(s)
+print("V")
+print(v1)
+print("V np")
+print(v)
 
-# u1,s1,v1= svd(A)
-# u,s,v = np.linalg.svd(A)
-# print("U")
-# print(u1)
-# print("U np")
-# print(u)
-# print("S")
-# print(s1)
-# print("S np")
-# print(s)
-# print("V")
-# print(v1)
-# print("V np")
-# print(v)
-
-# print(u1 @ s1 @ v1)
-# print(u @ np.diag(s) @ v)
-
-# final_time = time.time()
-# print(final_time - start_time)
+print(u1 @ s1 @ v1)
+print(u @ np.diag(s) @ v)
