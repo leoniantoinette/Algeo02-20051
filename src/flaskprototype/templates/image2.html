@@ -3,27 +3,30 @@
     <head>
         <meta charset= "UTF-8">
         <title> Upload image</title>
-        <link rel="stylesheet" href= "{{url_for('static', filename = 'css/image.css')}}">
+        <link rel="stylesheet" href= "{{url_for('static', filename = 'css/image2.css')}}">
     </head>
     <body>
         <br>
-        <p><h1>Python Flask Upload Compress Image</h1></p>
-        <div class="container">
-            <div class = "col-3">
-                <div class="card">
-                    <h2>Before</h2>
-                    {% if filename %}
-                        <div class= "gfg">
-                            <img src="{{ url_for('static', filename= 'uploads/' + filename) }}">
-                        </div>
-                    {% endif %}
-                    <label for = "sizeimagebfr">Size Image Before: </label>
-                    <p placeholder="sizeimagebfr">{{sizebfr}}</p>
-                    <br>
-                </div> 
+        <div class = "profile">
+            <div class="name">
+                <a href = '/'>
+                <img src="{{ url_for('static', filename= 'icon2.jpeg') }}">
+                </a>
+            </div>
+        </div>
+            <section class = "container">
+                <div class = "col-3">
+                    <div class="card">
+                        <h2>Before</h2>
+                        {% if filename %}
+                            <div class= "gfg">
+                                <img src="{{ url_for('static', filename= 'uploads/' + filename) }}">
+                            </div>
+                        {% endif %}
 
+                        <br>
+                    </div> 
 
-                <div class="container">
                     <div class="card">
                         <br>
                         <h2>After</h2>
@@ -39,18 +42,33 @@
                                 <a href="/download" target="blank"><button class= 'btn btn-default'>Download</button></button></a>
                             </p>
                         </dl>
-                        <br>
-                        <label for = "compressed_percent">Percent comppresion: </label>
-                        <p placeholder="compressed_percent">{{percent}} </p>
-                        <br>
-                        <label for = "timetaken">Time taken to load image: </label>
-                        <p placeholder="timetaken"> {{times}} s</p>
-                        <br>
-                        <label for = "sizeimageaftr">Size Image After: </label>
-                        <p placeholder="sizeimageaftr"> {{sizeaftr}}</p>
                     </div>
-                </div>
-            </div>
-        </div>
+
+
+                    <div class="card">
+                        <details>
+                            <summary> <h2>Image Details</h2></summary>
+                            <div class="content_image">
+                                <br>
+                                <label for = "compressed_percent">Percent comppresion: </label>
+                                <p placeholder="compressed_percent">{{percent}} %</p>
+                                <hr>
+                                <br>
+                                <label for = "timetaken">Time taken to load image: </label>
+                                <p placeholder="timetaken"> {{times}} s</p>
+                                <hr>
+                                <br>
+                                <label for = "sizeimagebfr">Size Image Before: </label>
+                                <p placeholder="sizeimagebfr">{{sizebfr}}</p>
+                                <hr>
+                                <br>
+                                <label for = "sizeimageaftr">Size Image After: </label>
+                                <p placeholder="sizeimageaftr"> {{sizeaftr}}</p>        
+                                <br>
+                            </div>
+                        </details>
+                    </div>
+                </div>   
+            </section>
     </body>
 </html>

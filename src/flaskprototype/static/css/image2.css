@@ -1,0 +1,157 @@
+body{
+    background-color:#FFFAF5;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    margin: 5% 30px;
+    text-align: center;
+    
+}
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile img {
+    width: 100%;
+    margin:auto;
+}
+
+.profile .name {
+    display: flex;
+    flex: row;
+}
+
+.container{
+    margin:0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+.logo{
+    width: 170px;
+    height: 40px;  
+}
+
+.logo_image{
+    display: block;
+    width: 100%;
+}
+
+.logo_overlay{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.row{
+    margin-top:1em;
+    background-color: rgb(218, 131, 0);
+}
+
+.kpercent {
+    display: flex; /* 2. display flex to the rescue */
+    flex-direction: row;
+}
+
+.col-3{
+
+    width:1200px;
+    height: auto;
+    margin:0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    margin: 40px;
+    grid-auto-flow: dense;
+    gap: 10px;
+
+}
+.col-3 .card
+{
+    position: relative;
+    padding: 20px 40px 40px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: .3s ease;
+    background: linear-gradient(45deg, #fffaee,#ffdb88);
+    font-size: 15px;
+    border: 2px solid #D6D8E1;
+}
+
+
+.card:hover{
+    transform:scale(1.2);
+    -webkit-transform: scale(1.05);
+    -ms-transform:scale(0.6);
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.6);
+}
+
+.col-3 .card h2
+{
+    position:relative;
+    margin:0;
+    padding: 0;
+    font-size: 80px;
+    color: rgb(46, 39, 39);
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.col-3 .card label
+{
+    margin: 0;
+    padding: 0;
+    color:rgb(63, 59, 59);
+    font-size: 24px;
+}
+.col-3 .card p
+{
+    margin: 0;
+    padding: 0;
+    color:rgb(63, 59, 59);
+    font-size: 18px;
+}
+
+.btn-default
+{
+    background-color: rgb(252, 221, 221);
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 5px;
+    line-height: 28px;
+    width: 180px;
+}
+
+.btn-default:hover{
+    font-size: 18px;
+    font-weight: bold;
+    background-color:rgb(247, 205, 181);
+    cursor:pointer;
+}
+
+details > summary{
+    list-style-type: none;
+}
+
+details >summary::-webkit-details-marker{
+    display:none;
+}
+
+
+.gfg {
+    width:auto;
+    text-align:center;
+    padding:20px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

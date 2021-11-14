@@ -92,8 +92,6 @@ def uploads():
             if (file and allowed_file(file.filename)):
                 #saving file
 
-                
-                flash('Image being processed')
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))#saving
                 
