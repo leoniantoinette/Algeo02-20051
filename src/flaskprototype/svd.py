@@ -77,26 +77,3 @@ def svd(A):
   VT = V.T
   S = U.T @ A @ V
   return U, S, VT
-
-  # untuk testing
-np.set_printoptions(suppress=True)
-
-A = np.array([[2, 5, 8, 7], [5, 2, 2, 8], [7, 5, 6, 6], [5, 4, 4, 8]])
-
-u1,s1,v1= svd(A)
-u,s,v = np.linalg.svd(A)
-print("U")
-print(u1)
-print("U np")
-print(u)
-print("S")
-print(s1)
-print("S np")
-print(s)
-print("V")
-print(v1)
-print("V np")
-print(v)
-
-print(u1 @ s1 @ v1)
-print(u @ np.diag(s) @ v)
