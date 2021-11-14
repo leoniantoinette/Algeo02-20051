@@ -54,7 +54,7 @@ def eigen(A):
   n = Ak.shape[0]           # ukuran matrix yaitu n
   # inisialisasi matrix eigvec dengan suatu matrix identitas berukuran n
   eigvec = np.eye(n)
-  for i in range(500):
+  for i in range(300):
     # lakukan QR decomposition pada Ak
     Q, R = np.linalg.qr(Ak)
     Ak = R @ Q
