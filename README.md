@@ -60,3 +60,23 @@ flask run
 ![Screenshot (2334)](https://user-images.githubusercontent.com/82488797/141688279-98ab95e7-d2ea-4ef2-9557-91cd3ea8dada.png)
 
 ![Screenshot (2336)](https://user-images.githubusercontent.com/82488797/141688721-5623a161-e87c-4136-a84f-d7808b3e603a.png)
+
+## Project Structure
+```
+Algeo02-20051   
+├── src/flaskprototype                  # berisi source code dari program image compressor
+│   ├── __pycache__                     # berisi python3 bytecode yaang sudah dicompile dan dieksekusi
+│   ├── static                          # berisi file-file static
+│   │   ├── css                         # berisi desain dari halaman 1 dan halaman 2
+│   │   │   ├── image.css               # template style image.html
+│   │   │   └── image2.css              # template style image2.html
+│   │   ├── processed                   # hasil gambar yang telah diproses
+│   │   └── uploads                     # hasil gambar yang diinput pengguna
+│   ├── templates                       # berisi layout website
+│   │   ├── image.html                  # tampilan halaman pertama
+│   │   └── image2.html                 # tampilan halaman kedua
+│   ├── app.py                          # aplikasi flask
+│   └── svd.py                          # file svd untuk mencompress image
+├── test                                # berisi images untuk dites
+└── README.md
+```
