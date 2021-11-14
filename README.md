@@ -52,6 +52,11 @@ flask run
 ## Cara Menggunakan Website
 1. Masukkan banyaknya nilai singular yang ingin digunakan.
 2. Pilih gambar untuk dikompres.
-3. Tekan tombol compress dan tunggu beberapa saat.
+3. Tekan tombol Compress Now dan tunggu beberapa saat.
 4. Hasil kompres akan muncul, untuk melihat detailnya silakan tekan tulisan image details.
-5. Tekan tombol download untuk mengunduh gambar ke komputer Anda.
+5. Tekan tombol Download untuk mengunduh gambar ke komputer Anda.
+
+## Screenshots
+![Screenshot (2334)](https://user-images.githubusercontent.com/82488797/141688279-98ab95e7-d2ea-4ef2-9557-91cd3ea8dada.png)
+
+![Screenshot (2336)](https://user-images.githubusercontent.com/82488797/141688721-5623a161-e87c-4136-a84f-d7808b3e603a.png)
