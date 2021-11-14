@@ -152,7 +152,6 @@ def compressing(filename, k_value):
 
     
     compressedImage = Image.merge("RGB",(img_r,img_g,img_b))
-    compressedImage.paste(realimage, mask=realimage.split()[3])
 
     #Total waktu compression
     
