@@ -32,6 +32,8 @@ def allowed_file(filename):
 #Membuka file Image dan pecah menjadi martriks r,g,b
 def openImage(imagePath):
     originalImage = Image.open(imagePath)
+    if (originalImage.mode != 'RGB'):
+        originalImage = Image.open(imagePath).convert('RGB')
     image = np.array(originalImage).astype(float)
 
     imageRed = image[:, :, 0]
