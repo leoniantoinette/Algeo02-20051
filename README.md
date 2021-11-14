@@ -26,7 +26,7 @@ py -m venv env
 env\Scripts\activate
 pip install Flask
 ```
-3. go inside flaskprototype folder using by typing ```cd flaskprototype```, then run the command below :
+3. go inside flaskprototype folder by typing ```cd flaskprototype```, then run the command below :
 ```
 set FLASK_APP=app.py
 flask run
@@ -42,7 +42,7 @@ python3 -m venv env
 source env/bin/activate
 pip install Flask
 ```
-3. go inside flaskprototype folder using by typing ```cd flaskprototype```, then run the command below :
+3. go inside flaskprototype folder by typing ```cd flaskprototype```, then run the command below :
 ```
 export FLASK_APP=app.py
 flask run
