@@ -8,11 +8,9 @@
     <body>
         <br>
         <div class = "profile">
-            <div class="name">
-                <a href = '/'>
-                <img src="{{ url_for('static', filename= 'icon2.jpeg') }}">
-                </a>
-            </div>
+            <a href = '/'>
+            <img src="{{ url_for('static', filename= 'logo.png') }}">
+            </a>
         </div>
             <section class = "container">
                 <div class = "col-3">
@@ -49,7 +47,7 @@
                         <details>
                             <summary> <h2>Image Details</h2></summary>
                             <div class="content_image">
-                                <br>
+                                <br><br><br>
                                 <label for = "compressed_percent">Percent comppresion: </label>
                                 <p placeholder="compressed_percent">{{percent}} %</p>
                                 <hr>
