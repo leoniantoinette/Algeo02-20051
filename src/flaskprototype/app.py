@@ -32,8 +32,10 @@ def allowed_file(filename):
 #Membuka file Image dan pecah menjadi martriks r,g,b
 def openImage(imagePath):
     originalImage = Image.open(imagePath)
+
     if (originalImage.mode != 'RGB'):
-        originalImage = Image.open(imagePath).convert('RGB')
+        originalImage = originalImage.convert('RGB')
+
     image = np.array(originalImage).astype(float)
 
     imageRed = image[:, :, 0]
@@ -135,7 +137,7 @@ def compressing(filename, k_value):
     #comppressing image after uploaded inside uploads folder
     start_time = time.time()
     r,g,b, originalImage = openImage('./static/uploads/' + filename)
-    
+    realimage = Image.open('./static/uploads/' + filename)
     
     k_value = int(k_value)
     
@@ -150,7 +152,7 @@ def compressing(filename, k_value):
 
     
     compressedImage = Image.merge("RGB",(img_r,img_g,img_b))
-    
+    compressedImage.paste(realimage, mask=realimage.split()[3])
 
     #Total waktu compression
     
@@ -161,19 +163,19 @@ def compressing(filename, k_value):
     # compressedImage.save(data, "JPEG")
 
     #penamaan file yang baru buat simpan hasil compress
-    # renewnamefile = filename.split(".")
-    # renewnamefile = renewnamefile[0]
+    renewnamefile = filename.split(".")
+    renewnamefile = renewnamefile[1]
 
     #save file hasil image
-    compressedImage.save('static/processed/compressed' + 'hasil' + '.jpeg')
+    compressedImage.save('static/processed/compressed' + 'hasil.' + renewnamefile)
     final_time = time.time()
     total_time = final_time - start_time
     # mengembalikan laman
-    return render_template('image2.html', filename=filename, sizebfr=originalSize, times= str("%.2f" %total_time), sizeaftr=compressedSize,percent=percent)
+    return render_template('image2.html', filename=filename, sizebfr=originalSize, times= str("%.2f" %total_time), sizeaftr=compressedSize,percent=percent, jenisfile=renewnamefile)
 
 @app.route('/download') 
 def downloadimg():
-    return send_from_directory(directory='static/processed',path ='compressedhasil.jpeg',as_attachment=True)
+    return send_from_directory(directory='static/processed',path ='compressedhasil.png',as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
