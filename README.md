@@ -78,5 +78,6 @@ Algeo02-20051
 │   ├── app.py                          # aplikasi flask
 │   └── svd.py                          # file svd untuk mencompress image
 ├── test                                # berisi images untuk dites
+├── doc                                 # berisi file laporan algeo  
 └── README.md
 ```

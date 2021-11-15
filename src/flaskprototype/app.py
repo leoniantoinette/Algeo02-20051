@@ -3,7 +3,6 @@ import os , io
 from werkzeug.utils import secure_filename
 from PIL import Image
 import numpy as np
-import base64
 import time
 from svd import svd
 
@@ -18,12 +17,6 @@ app.config['MAX_CONTENT_LENGTH'] = 120 * 1024 * 1024
  
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
-global k_value
-global imgdata
-global total_time
-global originalSize
-global compressedSize
-global percent
  
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -126,21 +119,16 @@ def compressing(filename, k_value):
     originalSize = (row * col * 3)
     compressedSize = (k_value * (1 + row + col) * 3)
 
-
     ratio = (compressedSize/originalSize)
     percent = (round(ratio * 100, 2))
 
-
-    print(percent)
-
-    #comppressing image after uploaded inside uploads folder
+    #compressing image after uploaded inside uploads folder
     start_time = time.time()
     r,g,b, originalImage = openImage('./static/uploads/' + filename)
     realimage = Image.open('./static/uploads/' + filename)
     
     k_value = int(k_value)
-    
-    
+
     r_compressed = compression(r,k_value)
     g_compressed = compression(g,k_value)
     b_compressed = compression(b,k_value)
@@ -152,28 +140,22 @@ def compressing(filename, k_value):
     
     compressedImage = Image.merge("RGB",(img_r,img_g,img_b))
 
-    #Total waktu compression
-    
-    print(percent)
-
     #saving in binary to display and file to download
-    # data = io.BytesIO()
-    # compressedImage.save(data, "JPEG")
 
     #penamaan file yang baru buat simpan hasil compress
-    renewnamefile = filename.split(".")
-    renewnamefile = renewnamefile[1]
 
     #save file hasil image
-    compressedImage.save('static/processed/compressed' + 'hasil.' + renewnamefile)
+    compressedImage.save('static/processed/compressed' + 'hasil.jpeg')
+    #waktu compress
     final_time = time.time()
     total_time = final_time - start_time
     # mengembalikan laman
-    return render_template('image2.html', filename=filename, sizebfr=originalSize, times= str("%.2f" %total_time), sizeaftr=compressedSize,percent=percent, jenisfile=renewnamefile)
+    return render_template('image2.html', filename=filename, sizebfr=originalSize, times= str("%.2f" %total_time), sizeaftr=compressedSize,percent=percent)
 
-@app.route('/download') 
+@app.route('/download/') 
 def downloadimg():
-    return send_from_directory(directory='static/processed',path ='compressedhasil.png',as_attachment=True)
+    # put attachment file in download button
+    return send_from_directory(directory='static/processed',path ='compressedhasil.jpeg' ,as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)

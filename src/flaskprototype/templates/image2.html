@@ -32,12 +32,12 @@
                         <br>
                         {% if filename %}
                         <div class= "gfg">
-                            <img src="{{ url_for('static', filename= 'processed/compressedhasil.' + jenisfile) }}">
+                            <img src="{{ url_for('static', filename= 'processed/compressedhasil.jpeg') }}">
                         </div>
                         {% endif %}
                         <dl>
                             <p>
-                                <a href="/download" target="blank"><button class= 'btn btn-default'>Download</button></button></a>
+                                <a href="/download/{{jenisfile}}" target="blank"><button class= 'btn btn-default'>Download</button></button></a>
                             </p>
                         </dl>
                     </div>
